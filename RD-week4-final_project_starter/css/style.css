@@ -1,143 +1,171 @@
+/* ==========================================================================
+   Base Styles / Mobile View (Mobile-First: No Media Query for Mobile)
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #dedede;
+    color: #1a1a1a;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 h1 {
     text-align: center;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 32px;
-}
-
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
+    color: #1a1a1a;
+    margin-top: 10px;
 }
 
 p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    line-height: 1.6;
+    color: #222222;
+    max-width: 800px;
+    margin: 15px auto;
 }
 
-img{
-  width:100%;
+a {
+    color: #000000;
+    text-decoration: underline;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-
-p{
-  text-align:center;
+a:hover,
+a:focus {
+    color: #333333;
+    text-decoration: none;
 }
 
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
-
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
-
-.container {
+/* 4. Mobile View: 1-column grid with 10px gap between rows and columns */
+.grid {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+    gap: 10px;
+    row-gap: 10px;
+    column-gap: 10px;
+    max-width: 1200px;
+    margin: 20px auto;
 }
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
 
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
+/* Figures in light/default mode */
+figure {
+    background-color: #ffffff;
+    color: #222222;
+    border: 2px solid #555555;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
 }
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
 
-/* 
-footer {
-    display: flex;
-    justify-content: center;
-} */
-
-/* 
-header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
-
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
+figure img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     display: block;
-} */
+    margin: 0 auto 10px auto;
+}
+
+figcaption {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+footer {
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+
+/* ==========================================================================
+   5. Media Query 1: Tablet View (triggers at 772px min-width)
+   ========================================================================== */
+@media screen and (min-width: 772px) {
+    /* a) 2-column grid */
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* b) Border radius on figures to create circles */
+    figure {
+        border-radius: 50%;
+    }
+
+    /* c) Last figure spans both columns */
+    figure:last-child {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* ==========================================================================
+   6. Media Query 2: Large Screen View (triggers at 992px min-width)
+   ========================================================================== */
+@media screen and (min-width: 992px) {
+    /* a) Every third figure spans both columns */
+    figure:nth-child(3n) {
+        grid-column: 1 / span 2;
+    }
+
+    /* b) Remove border radius from all figures */
+    figure {
+        border-radius: 0;
+    }
+}
+
+/* ==========================================================================
+   7. Media Query 3: Prefers Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    /* a) Remove scroll behavior */
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ==========================================================================
+   8. Media Query 4: Prefers Dark Color Scheme
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #f5f5f5;
+    }
+
+    h1, p {
+        color: #f5f5f5;
+    }
+
+    a {
+        color: #ffd700;
+    }
+
+    a:hover,
+    a:focus {
+        color: #ffffff;
+    }
+
+    /* a) Background color of figures to dark color */
+    /* b) Font color of figures to lighter color (yellow) */
+    /* c) Border color of figures to black */
+    figure {
+        background-color: #222222;
+        color: #ffff00;
+        border-color: #000000;
+    }
+}
