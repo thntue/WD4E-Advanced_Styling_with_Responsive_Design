@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Base Styles / Mobile View (Mobile-First: No Media Query for Mobile)
-   ========================================================================== */
 
 html {
     scroll-behavior: smooth;
@@ -51,7 +48,6 @@ a:focus {
     text-decoration: none;
 }
 
-/* 4. Mobile View: 1-column grid with 10px gap between rows and columns */
 .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -62,7 +58,6 @@ a:focus {
     margin: 20px auto;
 }
 
-/* Figures in light/default mode */
 figure {
     background-color: #ffffff;
     color: #222222;
@@ -93,54 +88,30 @@ footer {
     margin: 30px 0 20px 0;
 }
 
-/* ==========================================================================
-   5. Media Query 1: Tablet View (triggers at 772px min-width)
-   ========================================================================== */
 @media screen and (min-width: 772px) {
-    /* a) 2-column grid */
     .grid {
         grid-template-columns: 1fr 1fr;
     }
-
-    /* b) Border radius on figures to create circles */
     figure {
         border-radius: 50%;
     }
-
-    /* c) Last figure spans both columns */
     figure:last-child {
         grid-column: 1 / span 2;
     }
 }
-
-/* ==========================================================================
-   6. Media Query 2: Large Screen View (triggers at 992px min-width)
-   ========================================================================== */
 @media screen and (min-width: 992px) {
-    /* a) Every third figure spans both columns */
     figure:nth-child(3n) {
         grid-column: 1 / span 2;
     }
-
-    /* b) Remove border radius from all figures */
     figure {
         border-radius: 0;
     }
 }
-
-/* ==========================================================================
-   7. Media Query 3: Prefers Reduced Motion
-   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-    /* a) Remove scroll behavior */
     html {
         scroll-behavior: auto;
     }
 }
-
-/* ==========================================================================
-   8. Media Query 4: Prefers Dark Color Scheme
-   ========================================================================== */
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
@@ -159,10 +130,6 @@ footer {
     a:focus {
         color: #ffffff;
     }
-
-    /* a) Background color of figures to dark color */
-    /* b) Font color of figures to lighter color (yellow) */
-    /* c) Border color of figures to black */
     figure {
         background-color: #222222;
         color: #ffff00;
